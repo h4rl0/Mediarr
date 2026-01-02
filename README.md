@@ -16,13 +16,25 @@ A clean Docker Compose setup for Sonarr, Radarr, Prowlarr, and Bazarr.
 ---
 ## 📂 Required Folder Layout
 
-All services mount the same `/data` directory to allow **hardlinks** and **instant moves**.
+All services mount the same /data directory to allow **hardlinks** and **instant moves**.
 
 ```text
 /data
-├── downloads
+├── config
+│   ├── sonarr
+│   ├── radarr
+│   ├── prowlarr
+│   └── bazarr
+├── torrents
 │   ├── incomplete
 │   └── complete
+│       ├── movies
+│       └── tv
+├── usenet
+│   ├── incomplete
+│   └── complete
+│       ├── movies
+│       └── tv
 └── media
     ├── movies
     └── tv
@@ -37,9 +49,12 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=               #Enter your local Timezone in each container, e.g. TZ=Europe/London
     volumes:
-      - /data:/data
+      - /data/config/sonarr:/config
+      - /data/torrents/complete:/downloads/torrents
+      - /data/usenet/complete:/downloads/usenet
+      - /data/media/tv:/tv
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -50,9 +65,12 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=          
     volumes:
-      - /data:/data
+      - /data/config/radarr:/config
+      - /data/torrents/complete:/downloads/torrents
+      - /data/usenet/complete:/downloads/usenet
+      - /data/media/movies:/movies
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -63,9 +81,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=         
     volumes:
-      - /data:/data
+      - /data/config/prowlarr:/config
+      - /data/torrents/complete:/downloads/torrents
+      - /data/usenet/complete:/downloads/usenet
     ports:
       - 9696:9696
     restart: unless-stopped
@@ -76,9 +96,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=           
     volumes:
-      - /data:/data
+      - /data/config/bazarr:/config
+      - /data/media/tv:/tv
+      - /data/media/movies:/movies
     ports:
       - 6767:6767
     restart: unless-stopped
@@ -86,6 +108,7 @@ services:
 networks:
   default:
     name: arrstack
+
 
 
 
