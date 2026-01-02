@@ -14,12 +14,16 @@ A clean Docker Compose setup for Sonarr, Radarr, Prowlarr, and Bazarr.
 | Bazarr    | Subtitle management                    |
 
 ---
-## Note
-💡 Adjust path/to/... to match your host machine’s folder structure.
-
----
+## 📂 Required Folder Layout
+/data
+├── downloads
+│   ├── incomplete
+│   └── complete
+└── media
+    ├── movies
+    └── tv
+ ---
 ## Docker Compose
-
 ```yaml
 services:
   sonarr:
@@ -30,9 +34,7 @@ services:
       - PGID=1000
       - TZ=Europe/London
     volumes:
-      - path/to/config
-      - path/to/downloads
-      - path/to/tv
+      - /data:/data
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -45,9 +47,7 @@ services:
       - PGID=1000
       - TZ=Europe/London
     volumes:
-      - path/to/config
-      - path/to/downloads
-      - path/to/movies
+      - /data:/data
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -60,7 +60,7 @@ services:
       - PGID=1000
       - TZ=Europe/London
     volumes:
-      - path/to/config
+      - /data:/data
     ports:
       - 9696:9696
     restart: unless-stopped
@@ -73,9 +73,7 @@ services:
       - PGID=1000
       - TZ=Europe/London
     volumes:
-      - path/to/config
-      - path/to/movies
-      - path/to/tv
+      - /data:/data
     ports:
       - 6767:6767
     restart: unless-stopped
@@ -83,5 +81,6 @@ services:
 networks:
   default:
     name: arrstack
+
 
 
