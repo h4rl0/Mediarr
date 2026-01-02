@@ -17,9 +17,13 @@ A clean Docker Compose setup for Sonarr, Radarr, Prowlarr, and Bazarr.
 | Bazarr    | Subtitle management (full setup only) |
 
 ---
+## Note
+💡 Adjust path/to/... to match your host machine’s folder structure.
 
+---
 ## Docker Compose
 
+```yaml
 services:
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
