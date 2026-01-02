@@ -25,8 +25,9 @@ All services mount the same `/data` directory to allow **hardlinks** and **insta
 │   └── complete
 └── media
     ├── movies
-    └── tv                                             
- ---
+    └── tv
+```                                           
+---
 ## Docker Compose
 ```yaml
 services:
