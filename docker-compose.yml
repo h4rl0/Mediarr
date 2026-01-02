@@ -5,11 +5,12 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=               #Enter your local Timezone in each container, e.g. TZ=Europe/London
     volumes:
-      - path/to/config
-      - path/to/downloads
-      - path/to/tv
+      - /data/config/sonarr:/config
+      - /data/torrents/complete:/downloads/torrents
+      - /data/usenet/complete:/downloads/usenet
+      - /data/media/tv:/tv
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -20,11 +21,12 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=          
     volumes:
-      - path/to/config
-      - path/to/downloads
-      - path/to/movies
+      - /data/config/radarr:/config
+      - /data/torrents/complete:/downloads/torrents
+      - /data/usenet/complete:/downloads/usenet
+      - /data/media/movies:/movies
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -35,9 +37,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=         
     volumes:
-      - path/to/config
+      - /data/config/prowlarr:/config
+      - /data/torrents/complete:/downloads/torrents
+      - /data/usenet/complete:/downloads/usenet
     ports:
       - 9696:9696
     restart: unless-stopped
@@ -48,11 +52,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=           
     volumes:
-      - path/to/config
-      - path/to/movies
-      - path/to/tv
+      - /data/config/bazarr:/config
+      - /data/media/tv:/tv
+      - /data/media/movies:/movies
     ports:
       - 6767:6767
     restart: unless-stopped
