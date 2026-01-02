@@ -1,6 +1,6 @@
 # 📦 Mediarr Docker Compose
 
-A clean Docker Compose setup for Sonarr, Radarr, Prowlarr, and Bazarr.
+A Docker Compose setup for Sonarr, Radarr, Prowlarr, and Bazarr.
 
 ---
 
