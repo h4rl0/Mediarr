@@ -42,8 +42,6 @@ All services mount the same /data directory to allow **hardlinks** and **instant
 ---
 ## Docker Compose
 ```yaml
-version: "3.9"
-
 services:
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
