@@ -14,14 +14,14 @@ A clean Docker Compose setup for Sonarr, Radarr, Prowlarr, and Bazarr.
 | Bazarr    | Subtitle management                    |
 
 ---
-## 📂 Required Folder Layout
-/data
-├── downloads
-│   ├── incomplete
-│   └── complete
-└── media
-    ├── movies
-    └── tv
+| ## 📂 Required Folder Layout                      |
+|   /data                                            |
+|  |  ├── downloads                                  |
+│  |  ├── incomplete                                 |
+│  |  └── complete                                   |
+|  └── media                                         |                                          
+|   ├── movies                                       |
+|   └── tv                                           |                                              
  ---
 ## Docker Compose
 ```yaml
